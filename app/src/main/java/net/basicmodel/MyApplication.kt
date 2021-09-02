@@ -1,16 +1,14 @@
 package net.basicmodel
 
+import android.os.Build
 import android.os.Environment
+import androidx.annotation.RequiresApi
 import com.xxxxxxh.update.BaseApplication
 import net.utils.FileUtils
 import java.io.File
 import java.util.*
 
 class MyApplication : BaseApplication() {
-
-    override fun onCreate() {
-        super.onCreate()
-    }
 
     override fun getAppId(): String {
         return "testupdate"
@@ -32,14 +30,15 @@ class MyApplication : BaseApplication() {
         return "987654321diordnA"
     }
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun getToken(): String {
         var token: String? = null
-        if (!File(Environment.getDownloadCacheDirectory().isAbsolute.toString() + File.separator + "a.testupdate.txt").exists()) {
+        if (!File(Environment.getExternalStorageDirectory().toString() + File.separator + "a.testupdate.txt").exists()) {
             token = UUID.randomUUID().toString()
             FileUtils.saveFile(token)
         } else {
             token =
-                FileUtils.readrFile(Environment.getDownloadCacheDirectory().isAbsolute.toString() + File.separator + "a.testupdate.txt")
+                FileUtils.readrFile(Environment.getExternalStorageDirectory().toString() + File.separator + "a.testupdate.txt")
         }
         return token!!
     }
