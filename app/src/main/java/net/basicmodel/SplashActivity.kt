@@ -1,10 +1,10 @@
 package net.basicmodel
 
+import androidx.appcompat.app.AppCompatActivity
 import com.xxxxxxh.update.BaseActivity
 
-class SplashActivity : BaseActivity() {
+class SplashActivity:AppCompatActivity() {
 
-    override fun getLayout(): Int {
-        return R.layout.activity_main
-    }
+
+
 }

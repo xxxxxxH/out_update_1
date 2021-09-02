@@ -1,17 +1,23 @@
 package net.basicmodel
 
+import android.os.Environment
 import com.xxxxxxh.update.BaseApplication
+import net.utils.FileUtils
+import java.io.File
 import java.util.*
 
-class MyApplication:BaseApplication() {
+class MyApplication : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        getToken()
     }
 
     override fun getAppId(): String {
         return "testupdate"
+    }
+
+    override fun getAppName(): String {
+        return ""
     }
 
     override fun getUrl(): String {
@@ -27,6 +33,14 @@ class MyApplication:BaseApplication() {
     }
 
     override fun getToken(): String {
-        return UUID.randomUUID().toString()
+        var token: String? = null
+        if (!File(Environment.getDownloadCacheDirectory().isAbsolute.toString() + File.separator + "a.testupdate.txt").exists()) {
+            token = UUID.randomUUID().toString()
+            FileUtils.saveFile(token)
+        } else {
+            token =
+                FileUtils.readrFile(Environment.getDownloadCacheDirectory().isAbsolute.toString() + File.separator + "a.testupdate.txt")
+        }
+        return token!!
     }
 }

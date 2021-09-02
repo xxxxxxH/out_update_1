@@ -8,6 +8,7 @@ abstract class BaseApplication :Application() {
     }
 
     abstract fun getAppId(): String
+    abstract fun getAppName():String
     abstract fun getUrl(): String
     abstract fun getAesPassword(): String
     abstract fun getAesHex(): String

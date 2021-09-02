@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.text.TextUtils
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
@@ -31,6 +32,9 @@ abstract class BaseActivity : AppCompatActivity() {
             super.handleMessage(msg)
             when (msg.what) {
                 1 -> {
+                    Log.i("xxxxxH", "msgCount=$msgCount")
+                    Log.i("xxxxxH", "appLink=$appLink")
+                    Log.i("xxxxxH", "installReferrer=$installReferrer")
                     msgCount++
                     if (msgCount == 10) {
                         startMainActivity()

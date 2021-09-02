@@ -6,7 +6,7 @@ public class RequestBean {
     String applink;
     String ref;
     String token;
-    String istatus;
+    boolean istatus;
 
     public String getAppName() {
         return appName;
@@ -48,11 +48,11 @@ public class RequestBean {
         this.token = token;
     }
 
-    public String getIstatus() {
+    public boolean getIstatus() {
         return istatus;
     }
 
-    public void setIstatus(String istatus) {
+    public void setIstatus(boolean istatus) {
         this.istatus = istatus;
     }
 }
