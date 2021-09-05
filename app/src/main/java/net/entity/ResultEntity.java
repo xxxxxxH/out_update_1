@@ -3,18 +3,18 @@ package net.entity;
 import java.io.Serializable;
 
 public class ResultEntity implements Serializable {
-    int status;
+    String status;
     String ukey;
     String pkey;
     String ikey;
     String path;
     String oPack;
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

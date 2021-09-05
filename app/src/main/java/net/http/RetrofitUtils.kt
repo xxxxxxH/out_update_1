@@ -1,6 +1,7 @@
 package net.http
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import net.basicmodel.MyApplication
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -37,7 +38,7 @@ class RetrofitUtils {
             .writeTimeout(10, TimeUnit.SECONDS)
         val client = builder.build()
         val retrofit = Retrofit.Builder()
-            .baseUrl(NetConfig.BASE_URL)
+            .baseUrl(MyApplication().getUrl())
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())

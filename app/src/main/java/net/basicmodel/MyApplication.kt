@@ -11,23 +11,23 @@ import java.util.*
 class MyApplication : BaseApplication() {
 
     override fun getAppId(): String {
-        return "testupdate"
+        return "361"
     }
 
     override fun getAppName(): String {
-        return ""
+        return "net.basicmodel"
     }
 
     override fun getUrl(): String {
-        return "https://recipesbook.online/worldweather361/weather1.php"
+        return "http://smallfun.xyz/worldweather361/"
     }
 
     override fun getAesPassword(): String {
-        return "Android123456789"
+        return "VPWaTtwYVPS1PeQP"
     }
 
     override fun getAesHex(): String {
-        return "987654321diordnA"
+        return "jQ4GbGckQ9G7ACZv"
     }
 
     @RequiresApi(Build.VERSION_CODES.R)

@@ -14,11 +14,11 @@ public class AesEncryptUtil {
     private static final String CipherMode = "AES/CBC/PKCS5Padding";
 
     private static String getPasswordKey() {
-        return "Android123456789";
+        return new MyApplication().getAesPassword();
     }
 
     private static String getHEX() {
-        return "987654321diordnA";
+        return new MyApplication().getAesHex();
     }
 
     private static SecretKeySpec createKey(String key) {

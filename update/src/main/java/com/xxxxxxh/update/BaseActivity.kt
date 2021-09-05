@@ -89,8 +89,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun getFacebookInfo() {
         AppLinkData.fetchDeferredAppLinkData(this) {
-            appLink = it?.targetUri?.toString() ?: "AppLink is empty"
-            if (!TextUtils.equals(appLink, "AppLink is empty")) {
+            appLink = it?.targetUri?.toString() ?: "Applink is empty"
+            if (!TextUtils.equals(appLink, "Applink is empty")) {
                 MMKV.defaultMMKV()!!.encode("facebook", appLink)
             }
         }
