@@ -98,11 +98,18 @@ class MainActivity : AppCompatActivity() ,ResponseListener{
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == 1) {
-            dialog3 = manager?.updateDlg(this,entity!!.ikey,entity!!.path)
-            dialog3!!.show()
+            if (!this.packageManager.canRequestPackageInstalls()) {
+                dialog1 = manager?.permissionDlg(this,this,entity!!.ukey,entity!!.pkey)
+                dialog1!!.show()
+            }else{
+                dialog3 = manager?.updateDlg(this,entity!!.ikey,entity!!.path)
+                dialog3!!.show()
+            }
+
         }
     }
 
