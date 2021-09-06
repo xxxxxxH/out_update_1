@@ -50,4 +50,5 @@ dependencies {
     implementation 'com.yaoxiaowen:download:1.4.1'
     api 'com.lijunhuayc.downloader:easyfiledownloader:1.1.5'
 
+
 }

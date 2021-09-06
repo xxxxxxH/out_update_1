@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
             MediaType.parse("application/json"),
             AesEncryptUtil.encrypt(Gson().toJson(requestBean))
         )
-        service.getResult(requestBody).enqueue(object : Callback<ResponseBody> {
+        service.getResult(AesEncryptUtil.encrypt(Gson().toJson(requestBean))).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                Log.i("xxxxxH", "onResponse=${response.body()!!.string()}")
+                Log.i("xxxxxH", "onResponse=${response.body()!!.string()}")
                 val result = AesEncryptUtil.decrypt(response.body()!!.string())
                 if (!TextUtils.isEmpty(result)) {
                     Log.i("xxxxxxH", "result=${result}")
@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("xxxxxxH","onFailure")
             }
 
         })
