@@ -102,13 +102,14 @@ class UpdateManager {
     @SuppressLint("QueryPermissionsNeeded")
     fun installApk(context: Context) {
         val path =
-            File(Environment.getExternalStorageDirectory().toString() + File.separator)
+            File(Environment.getExternalStorageDirectory().toString() + File.separator + "a.apk")
 
         if (Build.VERSION.SDK_INT > 24) {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
             intent.addCategory(Intent.CATEGORY_DEFAULT)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
             intent.setDataAndType(
                 FileProvider.getUriForFile(
                     context,
@@ -117,9 +118,7 @@ class UpdateManager {
                 ), "application/vnd.android.package-archive"
             )
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            if (context.packageManager.queryIntentActivities(intent, 0).size > 0) {
-                context.startActivity(intent)
-            }
+            context.startActivity(intent)
         } else {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.putExtra("name", "")

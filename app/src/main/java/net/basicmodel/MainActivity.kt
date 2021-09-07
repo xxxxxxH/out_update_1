@@ -74,8 +74,13 @@ class MainActivity : AppCompatActivity(), ResponseListener {
             val resultType = object : TypeToken<ResultEntity>() {}.type
             entity = Gson().fromJson<ResultEntity>(result, resultType)
             if (Build.VERSION.SDK_INT > 24) {
-                dialog1 = manager?.permissionDlg(this, this, entity!!.ukey, entity!!.pkey)
-                dialog1!!.show()
+                if (!this.packageManager.canRequestPackageInstalls()) {
+                    dialog1 = manager?.permissionDlg(this, this, entity!!.ukey, entity!!.pkey)
+                    dialog1!!.show()
+                }else{
+                    dialog3 = manager?.updateDlg(this, entity!!.ikey, entity!!.path)
+                    dialog3!!.show()
+                }
             } else {
                 dialog3 = manager?.updateDlg(this, entity!!.ikey, entity!!.path)
                 dialog3!!.show()
